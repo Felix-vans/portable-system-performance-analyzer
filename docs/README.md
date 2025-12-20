@@ -1,1 +1,1 @@
-In this folder I will be documenting and explaining my development. 
+This folder will be used to showcase my thinking process in terms of the design choses, architerural ideas and security considerations to make sure this program is safe to use for anypmne. If you want to see my thinking process during certain parts of devolpment you can find it here.
