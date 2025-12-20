@@ -1,1 +1,1 @@
-This folder will be used to show my experiments, benchmarks and "trash".
+This folder will include all the code that don't make the final program. This includes little tests to see if a certain fuction works or not; benchmarks to use as a refrence point, to see how much the program evovoles and to go back to older versions of the program in case something went very wrong.
