@@ -25,9 +25,8 @@ Then we will implement a weighted avrage for all the components of the benchmark
 ```
 Total Score (0–20) =
 CPU_score * 0.5 +
-RAM_score * 0.25 +
-Storage_score * 0.15 +
-Stability_score * 0.10
+RAM_score * 0.30 +
+Storage_score * 0.20 
 ```
 
 
