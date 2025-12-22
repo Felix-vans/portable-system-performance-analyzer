@@ -181,15 +181,7 @@ This experiment shows that:
 
 ## Meaning for This Portfolio Project
 
-The goal of this project should not be to “make the CPU faster”.
-
-Instead, useful improvements focus on:
-- Better CPU scheduling
-- Reducing background tasks
-- Improving cache usage
-- Optimizing thread priorities
-
-These changes improve real gaming performance, not just benchmark scores.
+This means that the CPU benchmark that will be done before and after the bottlenecks have been identified and resolved, will be a gaming-specific CPU benchmark. This will ensure we only see the effects the changes will have in respect to gaming which will give a clearer picture on how succesfull the program was.
 
 ---
 
@@ -220,3 +212,4 @@ Gaming performance cannot be accurately measured with simple CPU benchmarks.
 Understanding how workloads behave is more important than raw numbers.
 
 This experiment helps guide the next steps of this portfolio project.
+
