@@ -86,6 +86,64 @@ This ratio was compared between devices.
 
 ---
 
+## Measured Data
+
+The benchmarks were executed on three different devices.
+All values represent average execution time in seconds.
+
+### Computer 1 – HP Pavilion (Intel Core i5-1135G7)
+- General CPU Test (single-core): 12.76 s
+- Gaming CPU Test (single-core): 10.21 s
+- General CPU Test (multi-core): 4.70 s
+- Gaming CPU Test (multi-core): 5.10 s
+
+### Computer 2 – ThinkPad T450 (older Intel Core i5)
+- General CPU Test (single-core): 21.52 s
+- Gaming CPU Test (single-core): 16.02 s
+- General CPU Test (multi-core): 13.68 s
+- Gaming CPU Test (multi-core): 10.20 s
+
+### Computer 3 – Acer Chromebook 11 (Intel Celeron N3450)
+- General CPU Test (single-core): 24.93 s
+- Gaming CPU Test (single-core): 24.11 s
+- General CPU Test (multi-core): 12.48 s
+- Gaming CPU Test (multi-core): 12.51 s
+
+## Performance Ratios (Gaming / General)
+
+To compare both benchmarks, the following ratio was calculated:
+
+Gaming CPU Test Time / General CPU Test Time
+
+A value close to 1.0 means both tests behave similarly.
+A lower or higher value means different CPU behavior.
+
+### Single-Core ratios:
+- Computer 1 (i5-1135G7): 10.21 / 12.76 ≈ 0.80
+- Computer 2 (ThinkPad T450): 16.02 / 21.52 ≈ 0.74
+- Computer 3 (Celeron N3450): 24.11 / 24.93 ≈ 0.97
+
+### Multi-Core ratios:
+- Computer 1 (i5-1135G7): 5.10 / 4.70 ≈ 1.09
+- Computer 2 (ThinkPad T450): 10.20 / 13.68 ≈ 0.75
+- Computer 3 (Celeron N3450): 12.51 / 12.48 ≈ 1.00
+
+---
+
+## Data Analysis
+
+The results show that the relationship between the general CPU test and the gaming CPU test is not consistent across devices.
+
+On modern CPUs, the gaming test performs relatively better in single-core mode.
+On weaker or older CPUs, both tests produce similar results.
+
+In multi-core mode, the performance ratios vary strongly.
+This indicates that multi-core behavior depends heavily on workload structure and system scheduling.
+
+These differences confirm that general CPU benchmarks and gaming-oriented benchmarks measure different aspects of CPU performance.
+
+---
+
 ## Observations
 
 ### Single-Core Results
