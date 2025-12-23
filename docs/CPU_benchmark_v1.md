@@ -1,31 +1,38 @@
-# The first version of the CPU benchmark
-[CPU test](/src/Benchmark_application/measuring_module/CPU_test.py)
----
-
-## How does it work
-After the [CPU experiment](/experiments/cpu_test_experiment.md), I concluded a game spcific CPU benchmark would be more suitable for this project. The benchmarks consists of 3 little test that are specifically made to emulate game like calculations. 
-
-### Object movement test
-
-The first test is an object movement test. I began by defining 200 points wiht a random position (x,y,z) and then I gave everypoint a certain speed in the x-, y- and z-axis. These values will stay constant during the entire test. \n\nDuring the test the position of the points will be updated every for a time change of 16.7 ms. The points will be updated for a fixed amount of iterations.
-
-### Prime calculation
-The second test is a more integer and branch heavy test which simulates game logic and AI decision making. The test is simple, calculate the first 500 primes. During this test alot of if-else stamentets, loops and arrays are used to simulate game logic.
-
-### Matrix transformations
-The third test uses matrix transformations to emulate object movement and orientation, projection, camera control, etc. in video games. First, 100,000 matrices are randomly made and stored in an array. Then, they are transformed using a constant transformation matrix for a fixed amount of iterations
-
-### Giving the computer a score
-After these 3 test have been completed the time will stored as one frame. After ten seconds of repeating the tests and storing the frame times, we will give the computer a score out of 20 based on the following benchmarks: the avrage frame time; the percent of frames longer then 16.7 ms; the avrage of the ten slowest frames and the amount of frame times 120% longer than the goal of 16.7 ms. 
-
-This whole process will be repeated ten times and the scores will be saved. After this is finsished, the median of all the scores will be calculated to get a clear objective idea of the computer performance with modern games.
+# The First Version of the CPU Benchmark  
+[CPU test](/src/Benchmark%20application/Measuring%20module/CPU_test.py)
 
 ---
 
-## How this will be used in the system
-This is the first of 3 benchmarks that will make up the testing module. The testing module will collect the data about the computer. The first benchmark is the CPU test, this one. The second one is a RAM benchmark and storage benchmark.
+## How Does It Work
+After the [CPU experiment](/experiments/cpu_test_experiment.md), I concluded that a game-specific CPU benchmark would be more suitable for this project. The benchmark consists of three small tests that are specifically made to emulate game-like calculations.
 
-After all the data is collected for these 3 benchmarks, a different module will analyse the data to give the user a clear picture of how well their device can run video games.
+### Object Movement Test
 
+The first test is an object movement test. I began by defining 200 points with a random position (x, y, z), and then I gave every point a certain speed in the x-, y-, and z-axis. These values stay constant during the entire test.
 
-These 2 modules (collecting data and analysing data) will make up the testing application. This application will be used before and after the bottlenecks have been detected and resolved to get a clear picture of how much this project improves a devices performance.
+During the test, the position of the points is updated every time with a time change of 16.7 ms. The points are updated for a fixed amount of iterations.
+
+### Prime Calculation
+
+The second test is a more integer- and branch-heavy test, which simulates game logic and AI decision-making. The test is simple: calculate the first 500 prime numbers. During this test, a lot of if-else statements, loops, and arrays are used to simulate game logic.
+
+### Matrix Transformations
+
+The third test uses matrix transformations to emulate object movement and orientation, projection, camera control, etc. in video games. First, 100,000 matrices are randomly generated and stored in an array. Then, they are transformed using a constant transformation matrix for a fixed amount of iterations.
+
+### Giving the Computer a Score
+
+After these three tests have been completed, the time is stored as one frame. After ten seconds of repeating the tests and storing the frame times, the computer is given a score out of 20 based on the following benchmarks: the average frame time; the percentage of frames longer than 16.7 ms; the average of the ten slowest frames; and the amount of frame times that are 120% longer than the goal of 16.7 ms.
+
+This whole process is repeated ten times, and the scores are saved. After this is finished, the median of all the scores is calculated to get a clear and objective idea of the computer’s performance with modern games.
+
+---
+
+## How This Will Be Used in the System
+
+This is the first of three benchmarks that will make up the testing module. The testing module collects data about the computer. The first benchmark is the CPU test, this one. The second one is a RAM benchmark, and the third one is a storage benchmark.
+
+After all the data is collected for these three benchmarks, a different module analyses the data to give the user a clear picture of how well their device can run video games.
+
+These two modules (collecting data and analysing data) make up the testing application. This application is used before and after bottlenecks have been detected and resolved to get a clear picture of how much this project improves a device’s performance.
+
