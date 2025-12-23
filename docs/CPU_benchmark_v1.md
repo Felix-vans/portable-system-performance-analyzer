@@ -1,5 +1,5 @@
 # The first version of the CPU benchmark
-[CPU test](/src/Benchmark%20application/Measuring%20module/CPU_test.py)
+[CPU test](/src/Benchmark_application/measuring_module/CPU_test.py)
 ---
 
 ## How does it work
@@ -26,5 +26,6 @@ This whole process will be repeated ten times and the scores will be saved. Afte
 This is the first of 3 benchmarks that will make up the testing module. The testing module will collect the data about the computer. The first benchmark is the CPU test, this one. The second one is a RAM benchmark and storage benchmark.
 
 After all the data is collected for these 3 benchmarks, a different module will analyse the data to give the user a clear picture of how well their device can run video games.
+
 
 These 2 modules (collecting data and analysing data) will make up the testing application. This application will be used before and after the bottlenecks have been detected and resolved to get a clear picture of how much this project improves a devices performance.
