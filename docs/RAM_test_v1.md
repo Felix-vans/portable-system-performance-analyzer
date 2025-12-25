@@ -1,5 +1,7 @@
 # The first version of the RAM test
 
+[RAM test](/src/Benchmark_application/measuring_module/RAM_test)
+
 ## What does this component do?
 This is one of three components in the measuring module of the benchmark application. In the measuring module, data will be collect to see how well the machine can perform video game like test. This module is just to see can this machine run video games well and how much better will it be able to run video games after the perfomance is boosted?
 
