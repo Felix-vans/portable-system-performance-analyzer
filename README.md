@@ -55,7 +55,7 @@ The benchmark results are already being used to calculate an overall system heal
 
 ---
 
-## 📈 Roadmap (high-level)
+## 📈 Roadmap
 - Improve benchmark accuracy and consistency  
 - Implement bottleneck detection logic  
 - Add clear, user-friendly explanations and recommendations  
