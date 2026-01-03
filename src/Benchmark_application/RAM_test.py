@@ -61,14 +61,12 @@ def score():
     return total_score
 
 
-def output():
-    print(f'Average available RAM: {available_ram():.1f}%')
-    print(f'Average swap usage: {swap_used():.1f}%')
+def main():
+    ram = available_ram()
+    swap = swap_used()
+    print(f'Average available RAM: {ram:.1f}%')
+    print(f'Average swap usage: {swap:.1f}%')
     print(f'RAM performance score: {score()}/20')
 
-
-def main():
-    output()
-
-
-main()
+if __name__ == "__main__":
+    main()
