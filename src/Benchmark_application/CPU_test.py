@@ -103,66 +103,78 @@ def frame_test(
 
 
 
-# Benchmark configuration
+def score():
+    MOVEMENT_ITERS = 50
+    PRIME_ITERS = 1
+    TRANSFORM_ITERS = 9
+    TARGET_FPS = 60
+    TEST_DURATION = 5
 
-MOVEMENT_ITERS = 50
-PRIME_ITERS = 1
-TRANSFORM_ITERS = 9
-TARGET_FPS = 60
-TEST_DURATION = 5  # seconds
-scores = []
+    scores = []
 
-# Run test 10 times
-for _ in range(10):
-    dropped, total_frames, frame_times = frame_test(
-        MOVEMENT_ITERS,
-        PRIME_ITERS,
-        TRANSFORM_ITERS,
-        TEST_DURATION,
-        TARGET_FPS
-    )
+    for _ in range(10):
+        dropped, frame_times = frame_test(
+            MOVEMENT_ITERS,
+            PRIME_ITERS,
+            TRANSFORM_ITERS,
+            TEST_DURATION,
+            TARGET_FPS
+        )
 
-    drop_percentage = (dropped / total_frames) * 100
+        total_frames = len(frame_times)
+        drop_percentage = (dropped / total_frames) * 100
+
+        average_frame_ms = (sum(frame_times) / total_frames) * 1000
+
+        worst_10_frames = heapq.nlargest(10, frame_times)
+        worst_10_avg_ms = (sum(worst_10_frames) / 10) * 1000
+        worst_frame_ms = max(worst_10_frames) * 1000
+
+        spike_threshold = 1.2 * (1 / TARGET_FPS)
+        spike_count = sum(1 for t in frame_times if t > spike_threshold)
+
+        FRAME_BUDGET_MS = 16.7
+
+        smooth_penalty = max(
+            0,
+            (average_frame_ms - FRAME_BUDGET_MS) / FRAME_BUDGET_MS
+        ) * 10
+
+        stutter_score = (
+            (drop_percentage / 50) * 5 +
+            (worst_10_avg_ms / (FRAME_BUDGET_MS * 1.5)) * 3 +
+            (spike_count / 50) * 2
+        )
+
+        stability_penalty = min(10, stutter_score)
+
+        run_score = 20 - (smooth_penalty + stability_penalty)
+        run_score = round(min(20, max(0, run_score)), 2)
+
+        scores.append(run_score)
+
+    final_score = (scores[4] + scores[5]) / 2
+
+    metrics = {
+        "avg_frame_ms": average_frame_ms,
+        "drop_percent": drop_percentage,
+        "spike_count": spike_count,
+        "worst_frame_ms": worst_frame_ms,
+        "worst_10_avg_ms": worst_10_avg_ms,
+    }
+
+    return final_score, metrics
 
 
-    # Frame-time analysis
-
-    average_frame_ms = (sum(frame_times) / total_frames) * 1000
-
-    worst_10_frames = heapq.nlargest(10, frame_times)
-    worst_10_avg_ms = (sum(worst_10_frames) / 10) * 1000
-    worst_frame_ms = max(worst_10_frames) * 1000
-
-    spike_threshold = 1.2 * (1 / TARGET_FPS)
-    spike_count = sum(1 for t in frame_times if t > spike_threshold)
+def main():
+    final_score, metrics = score()
+    print(f"Average frame time: {round(metrics['avg_frame_ms'], 3)} ms")
+    print(f"Dropped frames: {round(metrics['drop_percent'], 2)}%")
+    print(f"Spike frames (>120%): {metrics['spike_count']}")
+    print(f"Worst frame time: {round(metrics['worst_frame_ms'], 3)} ms")
+    print(f"Average of worst 10 frames: {round(metrics['worst_10_avg_ms'], 3)} ms")
+    print(f"\nYour device scored {final_score}/20 (median)")
 
 
-    # Scoring
-
-    FRAME_BUDGET_MS = 16.7
-
-    smooth_penalty = max(0, (average_frame_ms - FRAME_BUDGET_MS) / FRAME_BUDGET_MS) * 10
-
-    stutter_score = (
-        (drop_percentage / 50) * 5 +
-        (worst_10_avg_ms / (FRAME_BUDGET_MS * 1.5)) * 3 +
-        (spike_count / 50) * 2
-    )
-
-    stability_penalty = min(10, stutter_score)
-
-    score = 20 - (smooth_penalty + stability_penalty)
-    score = round(min(20, max(0, score)), 2)
-    scores.append(score)
-
-final_score = (scores[4] + scores[5]) / 2 # Median score
-
-# Output
-
-print(f"Average frame time: {round(average_frame_ms, 3)} ms")
-print(f"Dropped frames: {round(drop_percentage, 2)}%")
-print(f"Spike frames (>120%): {spike_count}")
-print(f"Worst frame time: {round(worst_frame_ms, 3)} ms")
-print(f"Average of worst 10 frames: {round(worst_10_avg_ms, 3)} ms")
-
-print(f"\nYour device scored {final_score}/20 (median)")
+if __name__ == "__main__":  
+    main()
