@@ -1,6 +1,6 @@
 # The first version of the startup app detection and classification component
 
-## [Startup app classifier]("/src/Detection_application/Startupapps.py")
+## [Startup app classifier](/src/Detection_application/Startupapps.py)
 
 ## What it does
 
