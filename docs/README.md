@@ -1,3 +1,5 @@
-This folder will be used to showcase my thinking process in terms of the design choses, architerural ideas and security considerations to make sure this program is safe to use for anyone. It will also be used the give an explanation on the design choises of certain programs and application and how they will fit into the whole system.
+This folder documents the reasoning behind the project.
 
-I would recommend to use **History** to get a clearer picture of the evolution of this project and my thinking process.
+It’s used to explain design decisions, architectural choices, and security considerations, with the goal of making clear why things were built the way they were and how safety and reliability were taken into account. Some documents focus on the design of specific programs or components, others explain how those parts fit into the larger system.
+
+If you want to understand how the project evolved over time, start with **History**. It gives the clearest view of the project’s development and how my thinking changed as new problems and constraints came up.
