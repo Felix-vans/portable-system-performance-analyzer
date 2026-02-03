@@ -1,4 +1,6 @@
+import os
 import subprocess
+import numpy as np
 
 def split(string: str):
         last = 0
