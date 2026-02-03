@@ -1,6 +1,13 @@
 import subprocess
 from Windows_settings import read_registry_dword as dw
 
+def extract_hex_index(line):
+    parts = line.split()
+    for part in parts:
+        if part.startswith("0x"):
+            return int(part[2:], 16)
+    return None
+
 
 def get_list():
     cmd = "powercfg /list"
@@ -85,12 +92,21 @@ def proc_boost():
     }
 
     output = subprocess.check_output(cmd, shell=True, text=True)
-    lines = output.splitlines()[-4:-2]
-
-    res = []
-    for line in lines:
-        value = int(line.split()[line.split().index('Index:') + 1][3:], 16)
-        res.extend([value, boost_modes.get(value, "Onbekende modus")])
+    cut_start = -2
+    cut_end = None
+    while True:
+        try:
+            lines = output.splitlines()[cut_start:cut_end]
+            res = []
+            for line in lines:
+                value = int(line.split()[line.split().index('Index:') + 1][3:], 16)
+                res.extend([value, boost_modes.get(value, "Onbekende modus")])
+            break
+        except ValueError:
+            if cut_end == None:
+                cut_end = 0
+            cut_start -= 1
+            cut_end -= 1
 
     return {
         'battery_boost_mode': res[0],
